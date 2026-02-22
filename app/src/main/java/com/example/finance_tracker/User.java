@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 
 /**
  * User Entity - Represents the app user
- * Can be used for multi-user support or user preferences
+ * This class stores profile information and preferences locally.
  *
  * @author Adrian
  */
@@ -37,11 +37,22 @@ public class User {
 
     // ==================== CONSTRUCTORS ====================
 
+    /**
+     * Required by Room to recreate objects from the database.
+     */
+    public User() {}
+
+    /**
+     * Minimal constructor for new user creation.
+     */
     public User(@NonNull String username) {
         this.username = username;
-        this.defaultCurrency = "KES";
+        this.defaultCurrency = "KES"; // Defaulting to Kenya Shilling
     }
 
+    /**
+     * Full constructor for profile updates.
+     */
     public User(int userId, @NonNull String username, String email,
                 String phoneNumber, String defaultCurrency, String profileImageUrl) {
         this.userId = userId;
@@ -55,54 +66,24 @@ public class User {
 
     // ==================== GETTERS & SETTERS ====================
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+    public int getUserId() { return userId; }
+    public void setUserId(int userId) { this.userId = userId; }
 
     @NonNull
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername() { return username; }
+    public void setUsername(@NonNull String username) { this.username = username; }
 
-    public void setUsername(@NonNull String username) {
-        this.username = username;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getDefaultCurrency() { return defaultCurrency; }
+    public void setDefaultCurrency(String defaultCurrency) { this.defaultCurrency = defaultCurrency; }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getDefaultCurrency() {
-        return defaultCurrency;
-    }
-
-    public void setDefaultCurrency(String defaultCurrency) {
-        this.defaultCurrency = defaultCurrency;
-    }
-
-    public String getProfileImageUrl() {
-        return profileImageUrl;
-    }
-
-    public void setProfileImageUrl(String profileImageUrl) {
-        this.profileImageUrl = profileImageUrl;
-    }
+    public String getProfileImageUrl() { return profileImageUrl; }
+    public void setProfileImageUrl(String profileImageUrl) { this.profileImageUrl = profileImageUrl; }
 
 
     // ==================== OVERRIDE METHODS ====================
