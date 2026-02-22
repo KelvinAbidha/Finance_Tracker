@@ -14,7 +14,7 @@ public class DebtCalculator {
             // Skip fully settled debts
             if (debt.isSettled()) continue;
 
-            // Remaining amount (handles partial payments)
+            // Remaining amount (handles partial payments)..
             double remainingAmount = debt.getRemainingAmount();
 
             if (debt.getDebtType() == DebtType.OWED_TO_ME) {

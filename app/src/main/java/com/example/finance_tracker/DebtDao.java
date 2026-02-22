@@ -24,6 +24,6 @@ public interface DebtDao {
     @Delete
     void delete(debt debt); // For removing records
 
-    @Query("SELECT * FROM debts ORDER BY date_created DESC")
+    @Query("SELECT * FROM debt ORDER BY date_created DESC")
     LiveData<List<debt>> getAllDebts(); // For Kerry to show the list
 }
