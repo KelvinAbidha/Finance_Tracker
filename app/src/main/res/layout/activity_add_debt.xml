@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Person Name" />
+
+    <EditText
+        android:id="@+id/editAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Amount"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="12dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupDebtType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/radioOwedToMe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Owed To Me"/>
+
+        <RadioButton
+            android:id="@+id/radioIOwe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I Owe"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Debt"
+        android:layout_marginTop="24dp"/>
+
+</LinearLayout>
