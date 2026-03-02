@@ -1,5 +1,6 @@
 package com.example.finance_tracker;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +81,13 @@ public class DebtAdapter extends RecyclerView.Adapter<DebtAdapter.DebtViewHolder
         // Display basic info
         holder.nameText.setText(currentDebt.getPersonName());
         holder.amountText.setText(currentDebt.getFormattedAmount());
+
+        // Color coding: Red for "I Owe", Green for "Owed to Me"
+        if (currentDebt.getDebtType() == DebtType.I_OWE) {
+            holder.amountText.setTextColor(Color.parseColor("#DC2626")); // Red
+        } else {
+            holder.amountText.setTextColor(Color.parseColor("#16A34A")); // Green
+        }
 
         // Visual cue for settled debts
         holder.itemView.setAlpha(currentDebt.isSettled() ? 0.5f : 1.0f);

@@ -1,6 +1,7 @@
 package com.example.finance_tracker;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -19,7 +20,6 @@ import java.util.concurrent.Executors;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-import java.util.Date;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -69,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
                 double totalBalance = DebtCalculator.calculateTotalBalance(debts);
                 String formatted = String.format("Total Balance: KES %.2f", totalBalance);
                 tvTotalBalance.setText(formatted);
+
+                // Update balance color: Red if negative (you owe more), Green if positive (more is owed to you)
+                if (totalBalance < 0) {
+                    tvTotalBalance.setTextColor(Color.parseColor("#DC2626")); // Red
+                } else {
+                    tvTotalBalance.setTextColor(Color.parseColor("#16A34A")); // Green
+                }
             }
         });
 
@@ -80,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private String formatDate(Date date) {
+        if (date == null) return "N/A";
         return new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(date);
     }
     private void showDebtDetailsDialog(debt d) {
@@ -89,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 "Name: " + d.getPersonName() +
                         "\nAmount: " + d.getFormattedAmount() +
                         "\nDate Added: " + formatDate(d.getDateCreated()) +
-                        "\nDue Date: " + d.getDueDate();
+                        "\nDue Date: " + formatDate(d.getDueDate());
 
         new AlertDialog.Builder(this)
                 .setTitle("Debt Details")
